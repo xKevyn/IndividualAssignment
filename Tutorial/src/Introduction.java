@@ -16,6 +16,7 @@ public class Introduction {
 		{
 			default:
 				System.out.println("Please enter a valid program without any typing errors");
+				break;
 			case "BMI Calculator":
 				System.out.println("Noted that this only works for people that are 20 years old and above");
 				System.out.println("Hey,What your height in inches");
