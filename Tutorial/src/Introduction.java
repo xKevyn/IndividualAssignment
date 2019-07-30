@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class Introduction {
 
-	public static void main(String[] args) 
+	public static void main(String[] args) //main method
 	{
 		System.out.println("Welcome!\n"
 				+ "Which program are you interested to use?\n"
-				+ "BMI Calulator\n"
+				+ "BMI Calculator\n"
 				+ "Ticket Price Info\n"
 				+ "Advanced Ticket Price Info\n"
 				+ "ATM Machine");
@@ -68,6 +68,7 @@ public class Introduction {
 						System.out.println("Please enter a valid Day");
 						break;
 				}
+				break;
 			case "Advanced Ticket Price Info":
 				System.out.println("Which day are you buying the ticket?");
 				String AdvTicket_Day = scanner.nextLine();
@@ -107,6 +108,7 @@ public class Introduction {
 						break;
 				
 				}
+				break;
 			case "ATM Machine":
 				System.out.println("Please enter your pin");
 				String pin = scanner.nextLine();
