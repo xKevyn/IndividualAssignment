@@ -9,15 +9,15 @@ public class Introduction {
 				+ "BMI Calculator\n"
 				+ "Ticket Price Info\n"
 				+ "Advanced Ticket Price Info\n"
-				+ "ATM Machine");
-		Scanner scanner = new Scanner(System.in);
-		String program = scanner.nextLine();
-		switch(program)
+				+ "ATM Machine"); //providing options for user to choose from
+		Scanner scanner = new Scanner(System.in);//scanner for user input
+		String program = scanner.nextLine(); //accepts string input
+		switch(program.toLowerCase()) //to help minimize typing errors
 		{
 			default:
-				System.out.println("Please enter a valid program without any typing errors");
+				System.out.println("Please enter a valid program without any typing errors");// notify user when they enter invalid inputs
 				break;
-			case "BMI Calculator":
+			case "bmi calculator":
 				System.out.println("Noted that this only works for people that are 20 years old and above");
 				System.out.println("Hey,What your height in inches");
 				double inches = scanner.nextDouble();
@@ -45,24 +45,24 @@ public class Introduction {
 						System.out.println("You're overweight!!!");
 					}
 				break;
-			case "Ticket Price Info":
+			case "ticket price info":
 				System.out.println("Which day are you buying the ticket?");
 				String Ticket_Day = scanner.nextLine();
-				switch(Ticket_Day)
+				switch(Ticket_Day.toLowerCase())
 				{
-					case "Monday":
-					case "Tuesday":
-					case "Wednesday":
+					case "monday":
+					case "tuesday":
+					case "wednesday":
 						System.out.println("RM5");
 						break;
-					case "Thursday":
+					case "thursday":
 						System.out.println("RM10");
 						break;
-					case "Friday":
-					case "Sunday":
+					case "friday":
+					case "sunday":
 						System.out.println("RM20");
 						break;
-					case "Saturday":
+					case "saturday":
 						System.out.println("RM30");
 						break;
 					default:
@@ -70,15 +70,15 @@ public class Introduction {
 						break;
 				}
 				break;
-			case "Advanced Ticket Price Info":
+			case "advanced ticket price info":
 				System.out.println("Which day are you buying the ticket?");
 				String AdvTicket_Day = scanner.nextLine();
-				switch(AdvTicket_Day)
+				switch(AdvTicket_Day.toLowerCase())
 				{
-					case "Monday":
-					case "Tuesday":
-					case "Wednesday":
-					case "Thursday":
+					case "monday":
+					case "tuesday":
+					case "wednesday":
+					case "thursday":
 						System.out.println("Please enter your age");
 						int age = scanner.nextInt();
 						if (age <= 9 || age >= 64)
@@ -90,9 +90,9 @@ public class Introduction {
 							System.out.println("RM10");
 						}
 						break;
-					case "Friday":
-					case "Sunday":
-					case "Saturday":
+					case "friday":
+					case "sunday":
+					case "saturday":
 						System.out.println("Please enter your age");
 						int age2 = scanner.nextInt();
 						if (age2 <= 9 || age2 >= 64)
@@ -110,7 +110,7 @@ public class Introduction {
 				
 				}
 				break;
-			case "ATM Machine":
+			case "atm machine":
 				System.out.println("Please enter your pin");
 				String pin = scanner.nextLine();
 				String User_Pin = "123456789";
@@ -124,27 +124,27 @@ public class Introduction {
 						+ "Withdraw Money\n"
 						+ "Bill Pay");
 				String transaction = scanner.nextLine();
-					switch(transaction)
+					switch(transaction.toLowerCase())
 					{
 						default:
 							System.out.println("Please select a valid transaction");
 							break;
-						case "Transfer":
-						case "Deposit money":
-						case "Setting":
-						case "Balance Enquiry":
-						case "Bill Pay":
+						case "transfer":
+						case "deposit money":
+						case "setting":
+						case "balance enquiry":
+						case "bill pay":
 							System.out.println("This function is currently not supported\n"
 									+ "Please use something else");
 							break;
-						case "Withdraw Money":
+						case "withdraw money":
 							System.out.println("Select your account type\n"
 									+ "Savings\n"
 									+ "Current");
 							String acc_type = scanner.nextLine();
-								switch(acc_type)
+								switch(acc_type.toLowerCase())
 								{
-									case "Savings":
+									case "savings":
 										System.out.println("You're not allow to withdraw sens");
 										int saving_acc = 500;
 										System.out.println("Current Balance:RM" + saving_acc);
@@ -154,7 +154,7 @@ public class Introduction {
 										System.out.println("New Balance:RM" + saving_acc);
 										System.out.println("Please take your money");
 										break;
-									case "Current":
+									case "current":
 										System.out.println("You're not allow to withdraw sens");
 										int current_acc = 500;
 										System.out.println("Current Balance:RM" + current_acc);
@@ -175,8 +175,8 @@ public class Introduction {
 					
 				}
 				
-	
+				
 		}
-
+		scanner.close();
 	}
 }
