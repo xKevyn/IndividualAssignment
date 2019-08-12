@@ -81,7 +81,7 @@ public class Introduction {
 					case "thursday":
 						System.out.println("Please enter your age");
 						int age = scanner.nextInt();
-						if (age <= 9 || age >= 64)
+						if (age <= 9 || age >= 66)
 						{
 							System.out.println("Your Ticket Price is FREE!!!");
 						}
