@@ -95,7 +95,7 @@ public class Introduction {
 					case "saturday":
 						System.out.println("Please enter your age");
 						int age2 = scanner.nextInt();
-						if (age2 <= 9 || age2 >= 64)
+						if (age2 <= 9 || age2 >= 66)
 						{
 							System.out.println("RM10");
 						}
