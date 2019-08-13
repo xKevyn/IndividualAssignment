@@ -139,10 +139,10 @@ public class Introduction {
 				break;
 			//ATM Machine Program
 			case "atm machine":
-				System.out.println("Please enter your pin");//prompt
-				
 				do
 				{
+					System.out.println("Please enter your pin");//prompt
+
 					pin = scanner.nextLine();//getting input(pin) from user
 					User_Pin = "123456789";//user's registered pin
 				}
