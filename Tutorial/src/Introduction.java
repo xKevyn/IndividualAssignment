@@ -13,10 +13,10 @@ public class Introduction {
 		
 		System.out.println("Welcome!\n"
 				+ "Which program are you interested to use?\n"
-				+ "BMI Calculator\n"
-				+ "Ticket Price Info\n"
-				+ "Advanced Ticket Price Info\n"
-				+ "ATM Machine"); //providing options for user to choose from
+				+ "[BMI Calculator "
+				+ "/ Ticket Price Info "
+				+ "/ Advanced Ticket Price Info "
+				+ "/ ATM Machine]"); //providing options for user to choose from
 		
 		Scanner scanner = new Scanner(System.in);//scanner for user input
 		String program = scanner.nextLine(); //getting input(program) from user
@@ -30,13 +30,13 @@ public class Introduction {
 			case "bmi calculator":
 				System.out.println("Noted that this only works for people that are 20 years old and above");//information for user
 				
-				System.out.println("Hey,What your height in inches");//prompt user
+				System.out.println("Please enter your height in inches?");//prompt user
 				double inches = scanner.nextDouble();//getting input(inches) from user
-				System.out.println("Hey,What your weight in pounds");//prompt user
+				System.out.println("Please enter your weight in pounds?");//prompt user
 				double pounds = scanner.nextDouble();//getting input(pounds) from user
 				
 				//bmi only works with kg and cm
-				double height = inches*0.0254;//convert inches to cm
+				double height = inches*0.0254;//convert inches to cm	
 				double weight = pounds*0.45359237;//convert pounds to kg
 				double BMI_Index = weight/(height*height);//calculate bmi
 				
