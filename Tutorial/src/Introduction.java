@@ -13,10 +13,10 @@ public class Introduction {
 		
 		System.out.println("Welcome!\n"
 				+ "Which program are you interested to use?\n"
-				+ "[BMI Calculator "
+				+ "[ BMI Calculator "
 				+ "/ Ticket Price Info "
 				+ "/ Advanced Ticket Price Info "
-				+ "/ ATM Machine]"); //providing options for user to choose from
+				+ "/ ATM Machine ]"); //providing options for user to choose from
 		
 		Scanner scanner = new Scanner(System.in);//scanner for user input
 		String program = scanner.nextLine(); //getting input(program) from user
@@ -152,12 +152,12 @@ public class Introduction {
 				if(pin.equals(User_Pin))
 				{		
 				System.out.println("Please select a transaction\n"
-						+ "Transfer\n"
-						+ "Deposit money\n"
-						+ "Setting\n"
-						+ "Balance Enquiry\n"
-						+ "Withdraw Money\n"
-						+ "Bill Pay");//user can select the functionality they want to use
+						+ "[ Transfer "
+						+ "/ Deposit money "
+						+ "/ Setting "
+						+ "/ Balance Enquiry "
+						+ "/ Withdraw Money "
+						+ "/ Bill Pay ]");//user can select the functionality they want to use
 				String transaction = scanner.nextLine();
 					
 					//functionality options
