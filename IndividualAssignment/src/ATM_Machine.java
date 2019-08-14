@@ -101,7 +101,7 @@ public class ATM_Machine {
 					JOptionPane.showMessageDialog(null,"Current Balance:RM" + saving_acc);//show the current balance user have
 					amountString = JOptionPane.showInputDialog(null,"Enter amount to deposit", "Amount deposit", JOptionPane.INFORMATION_MESSAGE);//prompt
 					amount = Integer.parseInt(amountString);
-					saving_acc -= amount;
+					saving_acc += amount;
 					
 					JOptionPane.showMessageDialog(null,"New Balance:RM" + saving_acc);//show the new balance after withdrawing
 					JOptionPane.showMessageDialog(null,"Please insert your money");//notify user to take their money
@@ -111,7 +111,7 @@ public class ATM_Machine {
 					JOptionPane.showMessageDialog(null,"Current Balance:RM" + saving_acc);//show the current balance user have
 					amountString = JOptionPane.showInputDialog(null,"Enter amount to deposit", "Amount deposit", JOptionPane.INFORMATION_MESSAGE);//prompt
 					amount = Integer.parseInt(amountString);
-					current_acc -= amount;
+					current_acc += amount;
 					
 					JOptionPane.showMessageDialog(null,"New Balance:RM" + current_acc);//show the new balance after withdrawing
 					JOptionPane.showMessageDialog(null,"Please insert your money");//notify user to take their money
