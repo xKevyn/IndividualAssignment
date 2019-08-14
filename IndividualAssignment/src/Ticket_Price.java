@@ -1,12 +1,14 @@
 import javax.swing.JOptionPane;
 
 
-public class Ticket_Price {
+public class Ticket_Price 
+{
 	public static void main(String[] args) 
 	{
-		
+		//Variable
 		String Ticket_Day;
 		
+		//Input
 		Ticket_Day = JOptionPane.showInputDialog(null,"Which day are you buying the ticket?", "Ticket Price Program", JOptionPane.INFORMATION_MESSAGE);//prompt
 		
 		//Displaying different ticket price for each different day user selected
