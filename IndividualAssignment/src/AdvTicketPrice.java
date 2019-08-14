@@ -5,13 +5,14 @@ public class AdvTicketPrice
 {
 	public static void main(String[] args) 
 	{
-		
+		//Variables
 		String AdvTicket_Day;
 		String ageString;
 		int age;
 		
+		//Input
 		AdvTicket_Day = JOptionPane.showInputDialog(null,"Which day are you buying the ticket?",
-				"Advanced version of Ticket Price Program", JOptionPane.INFORMATION_MESSAGE);//prompt
+				"Advanced version of Ticket Price Program", JOptionPane.INFORMATION_MESSAGE);
 		
 		//Displaying different ticket price for each different day user selected and age they are
 		switch(AdvTicket_Day.toLowerCase())
@@ -22,7 +23,7 @@ public class AdvTicketPrice
 			case "wednesday":
 			case "thursday":
 				ageString = JOptionPane.showInputDialog(null,"Please enter your age", "Age", JOptionPane.INFORMATION_MESSAGE);
-				age = Integer.parseInt(ageString);
+				age = Integer.parseInt(ageString);//convert from string to integer
 				
 				//Kids and elders are free
 				if (age <= 9 || age >= 66)
@@ -39,7 +40,7 @@ public class AdvTicketPrice
 			case "sunday":
 			case "saturday":
 				ageString = JOptionPane.showInputDialog(null,"Please enter your age", "Age", JOptionPane.INFORMATION_MESSAGE);
-				age = Integer.parseInt(ageString);
+				age = Integer.parseInt(ageString);//convert from string to integer
 				
 				//Kids and elders gets a discount of RM10
 				if (age <= 9 || age >= 66)
