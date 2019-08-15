@@ -12,7 +12,7 @@ public class AdvTicketPrice
 		
 		//Input
 		AdvTicket_Day = JOptionPane.showInputDialog(null,"Which day are you buying the ticket?",
-				"Advanced version of Ticket Price Program", JOptionPane.INFORMATION_MESSAGE);
+				"Advanced version of Ticket Price Program", JOptionPane.QUESTION_MESSAGE);
 		
 		//Displaying different ticket price for each different day user selected and age they are
 		switch(AdvTicket_Day.toLowerCase())
