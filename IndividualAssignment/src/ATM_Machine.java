@@ -155,7 +155,7 @@ public class ATM_Machine
 								case "1":
 									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
 											+ "[ 1.Yes /"
-											+ " 2.No ]","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+											+ " 2.No ]","Confirmation", JOptionPane.QUESTION_MESSAGE);
 									confirmation = Integer.parseInt(confirmationString);
 									
 									if(confirmation <= 1 && confirmation != 0)
@@ -172,7 +172,7 @@ public class ATM_Machine
 								case "2":
 									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
 											+ "[ 1.Yes /"
-											+ " 2.No ]","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+											+ " 2.No ]","Confirmation", JOptionPane.QUESTION_MESSAGE);
 									confirmation = Integer.parseInt(confirmationString);
 									
 									if(confirmation <= 1 && confirmation != 0)
@@ -197,7 +197,7 @@ public class ATM_Machine
 								case "1":
 									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
 											+ "[ 1.Yes /"
-											+ " 2.No ]","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+											+ " 2.No ]","Confirmation", JOptionPane.QUESTION_MESSAGE);
 									confirmation = Integer.parseInt(confirmationString);
 									
 									if(confirmation <= 1 && confirmation != 0)
@@ -214,7 +214,7 @@ public class ATM_Machine
 								case "2":
 									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
 											+ "[ 1.Yes /"
-											+ " 2.No ]","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+											+ " 2.No ]","Confirmation", JOptionPane.QUESTION_MESSAGE);
 									confirmation = Integer.parseInt(confirmationString);
 									
 									if(confirmation <= 1 && confirmation != 0)
