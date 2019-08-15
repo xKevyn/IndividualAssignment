@@ -9,7 +9,7 @@ public class Ticket_Price
 		String Ticket_Day;
 		
 		//Input
-		Ticket_Day = JOptionPane.showInputDialog(null,"Which day are you buying the ticket?", "Ticket Price Program", JOptionPane.INFORMATION_MESSAGE);//prompt
+		Ticket_Day = JOptionPane.showInputDialog(null,"Which day are you buying the ticket?", "Ticket Price Program", JOptionPane.QUESTION_MESSAGE);//prompt
 		
 		//Displaying different ticket price for each different day user selected
 		switch(Ticket_Day.toLowerCase())
