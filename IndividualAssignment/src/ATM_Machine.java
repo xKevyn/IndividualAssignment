@@ -12,7 +12,7 @@ public class ATM_Machine
 		String amountString;
 		String id;
 		String bill;
-		String confirmation;
+		String confirmationString;
 		final String User_Pin = "123456789";//user's registered pin
 		int electricBill = 150;
 		int waterBill = 20;
@@ -20,6 +20,7 @@ public class ATM_Machine
 		int amount;
 		int saving_acc = 500;
 		int current_acc = 0;
+		int confirmation;
 		ArrayList<String> idList = new ArrayList<String>();//Registered ids
 		idList.add("123456789");
 		idList.add("325363744");
@@ -144,85 +145,93 @@ public class ATM_Machine
 					{
 						case "1":
 							//Input
-							bill = acc_type = JOptionPane.showInputDialog(null,"Select your bill to pay\n"
+							bill = JOptionPane.showInputDialog(null,"Select your bill to pay\n"
 									+ "[ 1.Electric bill /"
-									+ " 2.Water bill ]","Account Type", JOptionPane.INFORMATION_MESSAGE);
+									+ " 2.Water bill ]","Bill Type", JOptionPane.INFORMATION_MESSAGE);
 							
 							//electric or water bill
 							switch(bill)
 							{
 								case "1":
-									confirmation = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
+									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
 											+ "[ 1.Yes /"
-											+ " 2.No ]","Account Type", JOptionPane.INFORMATION_MESSAGE);
-									switch(confirmation)
+											+ " 2.No ]","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+									confirmation = Integer.parseInt(confirmationString);
+									
+									if(confirmation <= 1 && confirmation != 0)
 									{
-										case "1":
-											JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
-											saving_acc -= electricBill;
-											JOptionPane.showMessageDialog(null,"New Balance: RM" + saving_acc);
-											break;
-										case "2":
-											return;
+										JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
+										saving_acc -= electricBill;
+										JOptionPane.showMessageDialog(null,"New Balance: RM" + saving_acc);
+									}
+									else
+									{
+										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
 									}
 									break;
 								case "2":
-									confirmation = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
+									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
 											+ "[ 1.Yes /"
-											+ " 2.No ]","Account Type", JOptionPane.INFORMATION_MESSAGE);
-									switch(confirmation)
+											+ " 2.No ]","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+									confirmation = Integer.parseInt(confirmationString);
+									
+									if(confirmation <= 1 && confirmation != 0)
 									{
-										case "1":
-											JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
-											saving_acc -= waterBill;
-											JOptionPane.showMessageDialog(null,"New Balance: RM" + saving_acc);
-											break;
-										case "2":
-											return;
+										JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
+										saving_acc -= waterBill;
+										JOptionPane.showMessageDialog(null,"New Balance: RM" + saving_acc);
+									}
+									else
+									{
+										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
 									}
 									break;
 							}
 							break;
 						case "2":
-							bill = acc_type = JOptionPane.showInputDialog(null,"Select your bill to pay\n"
+							bill = JOptionPane.showInputDialog(null,"Select your bill to pay\n"
 									+ "[ 1.Electric bill /"
-									+ " 2.Water bill ]","Account Type", JOptionPane.INFORMATION_MESSAGE);
+									+ " 2.Water bill ]","Bill Type", JOptionPane.INFORMATION_MESSAGE);
 							switch(bill)
 							{
 								case "1":
-									confirmation = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
+									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
 											+ "[ 1.Yes /"
-											+ " 2.No ]","Account Type", JOptionPane.INFORMATION_MESSAGE);
-									switch(confirmation)
+											+ " 2.No ]","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+									confirmation = Integer.parseInt(confirmationString);
+									
+									if(confirmation <= 1 && confirmation != 0)
 									{
-										case "1":
-											JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
-											current_acc -= electricBill;
-											JOptionPane.showMessageDialog(null,"New Balance: RM" + current_acc);
-											break;
-										case "2":
-											JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
-											break;
+										JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
+										current_acc -= electricBill;
+										JOptionPane.showMessageDialog(null,"New Balance: RM" + current_acc);
+									}
+									else
+									{
+										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
 									}
 									break;
 								case "2":
-									confirmation = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
+									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
 											+ "[ 1.Yes /"
-											+ " 2.No ]","Account Type", JOptionPane.INFORMATION_MESSAGE);
-									switch(confirmation)
+											+ " 2.No ]","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+									confirmation = Integer.parseInt(confirmationString);
+									
+									if(confirmation <= 1 && confirmation != 0)
 									{
-										case "1":
-											JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
-											current_acc -= waterBill;
-											JOptionPane.showMessageDialog(null,"New Balance: RM" + current_acc);
-											break;
-										case "2":
-											JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
-											break;
+										JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
+										current_acc -= waterBill;
+										JOptionPane.showMessageDialog(null,"New Balance: RM" + current_acc);
+									}
+									else
+									{
+										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
 									}
 									break;
 							}
 							break;
+							default:
+								JOptionPane.showMessageDialog(null,"Please select a valid account type");
 					}
 					break;
 				case "5":
