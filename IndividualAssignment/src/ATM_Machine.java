@@ -19,6 +19,9 @@ public class ATM_Machine
 		final String bill_typeSEL = "Select your bill to pay\n"
 				+ "[ 1.Electric bill /"
 				+ " 2.Water bill ]";
+		final String ConfirmationSEL = "Are you sure you want to pay the bill\n"
+				+ "[ 1.Yes /"
+				+ " 2.No ]";
 		final String User_Pin = "123456";//user's registered pin
 		int electricBill = 150;
 		int waterBill = 20;
@@ -182,9 +185,7 @@ public class ATM_Machine
 							switch(bill)
 							{
 								case "1":
-									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
-											+ "[ 1.Yes /"
-											+ " 2.No ]","Confirmation", JOptionPane.QUESTION_MESSAGE);
+									confirmationString = JOptionPane.showInputDialog(null,ConfirmationSEL,"Confirmation", JOptionPane.QUESTION_MESSAGE);
 									confirmation = Integer.parseInt(confirmationString);
 									
 									if((confirmation <= 1 && confirmation != 0) && (saving_acc > 0))
@@ -200,9 +201,7 @@ public class ATM_Machine
 									
 									break;
 								case "2":
-									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
-											+ "[ 1.Yes /"
-											+ " 2.No ]","Confirmation", JOptionPane.QUESTION_MESSAGE);
+									confirmationString = JOptionPane.showInputDialog(null,ConfirmationSEL,"Confirmation", JOptionPane.QUESTION_MESSAGE);
 									confirmation = Integer.parseInt(confirmationString);
 									
 									if((confirmation <= 1 && confirmation != 0) && (saving_acc > 0))
@@ -215,7 +214,9 @@ public class ATM_Machine
 									{
 										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
 									}
-									
+									break;
+								default:
+									JOptionPane.showMessageDialog(null,"Please select a valid bill type");
 									break;
 							}
 							break;
@@ -224,9 +225,7 @@ public class ATM_Machine
 							switch(bill)
 							{
 								case "1":
-									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
-											+ "[ 1.Yes /"
-											+ " 2.No ]","Confirmation", JOptionPane.QUESTION_MESSAGE);
+									confirmationString = JOptionPane.showInputDialog(null,ConfirmationSEL,"Confirmation", JOptionPane.QUESTION_MESSAGE);
 									confirmation = Integer.parseInt(confirmationString);
 									
 									if((confirmation <= 1 && confirmation != 0) && (current_acc > 0))
@@ -242,9 +241,7 @@ public class ATM_Machine
 									
 									break;
 								case "2":
-									confirmationString = JOptionPane.showInputDialog(null,"Are you sure you want to pay the bill\n"
-											+ "[ 1.Yes /"
-											+ " 2.No ]","Confirmation", JOptionPane.QUESTION_MESSAGE);
+									confirmationString = JOptionPane.showInputDialog(null,ConfirmationSEL,"Confirmation", JOptionPane.QUESTION_MESSAGE);
 									confirmation = Integer.parseInt(confirmationString);
 									
 									if((confirmation <= 1 && confirmation != 0) && (current_acc > 0))
@@ -258,6 +255,9 @@ public class ATM_Machine
 										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
 									}
 									
+									break;
+								default:
+									JOptionPane.showMessageDialog(null,"Please select a valid bill type");
 									break;
 							}
 							break;
@@ -287,7 +287,7 @@ public class ATM_Machine
 								}
 								else
 								{
-									JOptionPane.showMessageDialog(null,"You have failed to transfer the money");//notify user that the process is succeed
+									JOptionPane.showMessageDialog(null,"You have failed to withdraw the money");//notify user that the process is succeed
 									saving_acc += amount;
 								}
 								
@@ -307,7 +307,7 @@ public class ATM_Machine
 								}
 								else
 								{
-									JOptionPane.showMessageDialog(null,"You have failed to transfer the money");//notify user that the process is succeed
+									JOptionPane.showMessageDialog(null,"You have failed to withdraw the money");//notify user that the process is succeed
 									current_acc += amount;
 								}
 								
