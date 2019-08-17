@@ -30,6 +30,8 @@ public class ATM_Machine
 		int saving_acc = 500;
 		int current_acc = 0;
 		int confirmation;
+		
+		//Initializing idList
 		ArrayList<String> idList = new ArrayList<String>();//Registered ids
 		idList.add("123456789");
 		idList.add("325363744");
@@ -38,6 +40,8 @@ public class ATM_Machine
 		idList.add("908462745");
 		
 		//Loop for inputing pin (maximum 3 times)
+		JOptionPane.showMessageDialog(null,"Please insert your card");
+		
 		do
 		{
 			pin = JOptionPane.showInputDialog(null,"Please enter your pin", "Pin", JOptionPane.INFORMATION_MESSAGE);//prompt
