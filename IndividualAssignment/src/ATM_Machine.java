@@ -9,27 +9,27 @@ public class ATM_Machine
 		String pin;
 		String transaction;
 		String acc_type;
-		String amountString;
 		String id;
 		String bill;
-		String confirmationString;
+		final String User_Pin = "123456";//user's registered pin
+		int electricBill = 150;
+		int waterBill = 20;
+		int saving_acc = 500;
+		int current_acc = 0;
+		
+		//to cut the code
 		final String acc_typeSEL = "Select your account type\n"
 				+ "[ 1.Savings /"
 				+ " 2.Current ]";
 		final String bill_typeSEL = "Select your bill to pay\n"
 				+ "[ 1.Electric bill /"
 				+ " 2.Water bill ]";
-		final String ConfirmationSEL = "Are you sure you want to pay the bill\n"
-				+ "[ 1.Yes /"
-				+ " 2.No ]";
-		final String User_Pin = "123456";//user's registered pin
-		int electricBill = 150;
-		int waterBill = 20;
-		int times = 0;
-		int amount;
-		int saving_acc = 500;
-		int current_acc = 0;
-		int confirmation;
+		final String transactionSEL = "Please select a transaction\n"
+				+ "[ 1.Transfer "
+				+ "/ 2.Deposit money "
+				+ "/ 3.Balance Enquiry "
+				+ "/ 4.Bill Pay "
+				+ "/ 5.Withdraw Money ]";
 		
 		//Initializing idList
 		ArrayList<String> idList = new ArrayList<String>();//Registered ids
@@ -42,27 +42,11 @@ public class ATM_Machine
 		//Loop for inputing pin (maximum 3 times)
 		JOptionPane.showMessageDialog(null,"Please insert your card");
 		
-		do
-		{
-			pin = JOptionPane.showInputDialog(null,"Please enter your pin", "Pin", JOptionPane.INFORMATION_MESSAGE);//prompt
-			times++;
-			if(times == 3)
-			{
-				JOptionPane.showMessageDialog(null,"You have exceed the maximum number of tries");
-			}
-		}
-		//user can reenter the pin if its wrong but when it exceed three tries, user can no longer attempt to enter pin anymore
-		while(pin.equals(User_Pin) == false && times < 3);
-		
+		pin = Pin();
 		//if the pin is correct proceed to the next step
 		if(pin.equals(User_Pin))
 		{		
-			transaction = JOptionPane.showInputDialog(null,"Please select a transaction\n"
-								+ "[ 1.Transfer "
-								+ "/ 2.Deposit money "
-								+ "/ 3.Balance Enquiry "
-								+ "/ 4.Bill Pay "
-								+ "/ 5.Withdraw Money ]");//user can select the functionality they want to use
+			transaction = JOptionPane.showInputDialog(null,transactionSEL);//user can select the functionality they want to use
 			
 			//functionality options
 			switch(transaction)
@@ -89,41 +73,11 @@ public class ATM_Machine
 						switch(acc_type)
 						{
 						case "1":
-						JOptionPane.showMessageDialog(null,"Current Balance:RM" + saving_acc);//show the current balance user have
-						amountString = JOptionPane.showInputDialog(null,"Enter amount to transfer", "Amount transfer", JOptionPane.INFORMATION_MESSAGE);//prompt
-						amount = Integer.parseInt(amountString);
-						
-						saving_acc -= amount;
-						
-						if(saving_acc > 0)
-						{
-						JOptionPane.showMessageDialog(null,"You have successfully transfer the money");//notify user that the process is succeed
-						JOptionPane.showMessageDialog(null,"New Balance:RM" + saving_acc);//show the new balance after transferring
-						}
-						else
-						{
-							JOptionPane.showMessageDialog(null,"You have failed to transfer the money");//notify user that the process is succeed
-							saving_acc += amount;
-						}
+						Transfer(saving_acc);
 						
 						break;
 						case "2":
-						JOptionPane.showMessageDialog(null,"Current Balance:RM" + current_acc);//show the current balance user have
-						amountString = JOptionPane.showInputDialog(null,"Enter amount to transfer", "Amount transfer", JOptionPane.INFORMATION_MESSAGE);//prompt
-						amount = Integer.parseInt(amountString);
-						
-						current_acc -= amount;
-						
-						if(current_acc > 0)
-						{
-						JOptionPane.showMessageDialog(null,"You have successfully transfer the money");//notify user that the process is succeed
-						JOptionPane.showMessageDialog(null,"New Balance:RM" + current_acc);//show the new balance after transferring
-						}
-						else
-						{
-							JOptionPane.showMessageDialog(null,"You have failed to transfer the money");//notify user that the process is succeed
-							saving_acc += amount;
-						}
+						Transfer(current_acc);
 						
 						break;
 						default:
@@ -140,31 +94,10 @@ public class ATM_Machine
 					switch(acc_type)
 					{
 					case "1":
-					JOptionPane.showMessageDialog(null,"You're not allow to deposit cents, RM1 Note, RM5 Note");
-					JOptionPane.showMessageDialog(null,"Current Balance:RM" + saving_acc);//show the current balance user have
-					
-					amountString = JOptionPane.showInputDialog(null,"Enter amount to deposit", "Amount deposit", JOptionPane.INFORMATION_MESSAGE);//prompt
-					amount = Integer.parseInt(amountString);
-					
-					saving_acc += amount;
-					
-					JOptionPane.showMessageDialog(null,"New Balance:RM" + saving_acc);//show the new balance after depositing
-					JOptionPane.showMessageDialog(null,"Please insert your money");//notify user to insert their money
+					Deposit(saving_acc);
 					break;
 					case "2":
-					JOptionPane.showMessageDialog(null,"You're not allow to withdraw cents, RM1 Note, RM5 Note");
-					JOptionPane.showMessageDialog(null,"Current Balance:RM" + saving_acc);//show the current balance user have
-					
-					amountString = JOptionPane.showInputDialog(null,"Enter amount to deposit", "Amount deposit", JOptionPane.INFORMATION_MESSAGE);//prompt
-					amount = Integer.parseInt(amountString);
-					
-					current_acc += amount;
-					
-					JOptionPane.showMessageDialog(null,"New Balance:RM" + current_acc);//show the new balance after depositing
-					JOptionPane.showMessageDialog(null,"Please insert your money");//notify user to insert their money
-					break;
-					default:
-					JOptionPane.showMessageDialog(null,"Please select a valid account type");//show error message to user
+					Deposit(current_acc);
 					break;
 					}
 					break;
@@ -181,43 +114,18 @@ public class ATM_Machine
 					{
 						case "1":
 							//Input
-							bill = JOptionPane.showInputDialog(null,"Select your bill to pay\n"
-									+ "[ 1.Electric bill /"
-									+ " 2.Water bill ]","Bill Type", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null,"Current Balance:RM" + saving_acc);//show the current balance user have
+							bill = JOptionPane.showInputDialog(null,bill_typeSEL,"Bill Type", JOptionPane.INFORMATION_MESSAGE);
 							
 							//electric or water bill
 							switch(bill)
 							{
-								case "1":
-									confirmationString = JOptionPane.showInputDialog(null,ConfirmationSEL,"Confirmation", JOptionPane.QUESTION_MESSAGE);
-									confirmation = Integer.parseInt(confirmationString);
-									
-									if((confirmation <= 1 && confirmation != 0) && (saving_acc > 0))
-									{
-										JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
-										saving_acc -= electricBill;
-										JOptionPane.showMessageDialog(null,"New Balance: RM" + saving_acc);
-									}
-									else
-									{
-										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
-									}
+								case "1":									
+									Bill(saving_acc, electricBill);
 									
 									break;
 								case "2":
-									confirmationString = JOptionPane.showInputDialog(null,ConfirmationSEL,"Confirmation", JOptionPane.QUESTION_MESSAGE);
-									confirmation = Integer.parseInt(confirmationString);
-									
-									if((confirmation <= 1 && confirmation != 0) && (saving_acc > 0))
-									{
-										JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
-										saving_acc -= waterBill;
-										JOptionPane.showMessageDialog(null,"New Balance: RM" + saving_acc);
-									}
-									else
-									{
-										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
-									}
+									Bill(saving_acc, waterBill);
 									break;
 								default:
 									JOptionPane.showMessageDialog(null,"Please select a valid bill type");
@@ -225,39 +133,16 @@ public class ATM_Machine
 							}
 							break;
 						case "2":
+							JOptionPane.showMessageDialog(null,"Current Balance:RM" + current_acc);//show the current balance user have
 							bill = JOptionPane.showInputDialog(null,bill_typeSEL,"Bill Type", JOptionPane.INFORMATION_MESSAGE);
 							switch(bill)
 							{
 								case "1":
-									confirmationString = JOptionPane.showInputDialog(null,ConfirmationSEL,"Confirmation", JOptionPane.QUESTION_MESSAGE);
-									confirmation = Integer.parseInt(confirmationString);
-									
-									if((confirmation <= 1 && confirmation != 0) && (current_acc > 0))
-									{
-										JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
-										current_acc -= electricBill;
-										JOptionPane.showMessageDialog(null,"New Balance: RM" + current_acc);
-									}
-									else
-									{
-										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
-									}
+									Bill(current_acc, electricBill);
 									
 									break;
 								case "2":
-									confirmationString = JOptionPane.showInputDialog(null,ConfirmationSEL,"Confirmation", JOptionPane.QUESTION_MESSAGE);
-									confirmation = Integer.parseInt(confirmationString);
-									
-									if((confirmation <= 1 && confirmation != 0) && (current_acc > 0))
-									{
-										JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
-										current_acc -= waterBill;
-										JOptionPane.showMessageDialog(null,"New Balance: RM" + current_acc);
-									}
-									else
-									{
-										JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
-									}
+									Bill(current_acc, waterBill);
 									
 									break;
 								default:
@@ -277,44 +162,10 @@ public class ATM_Machine
 						switch(acc_type)
 						{
 							case "1":
-								JOptionPane.showMessageDialog(null,"You're not allow to withdraw cents");
-								JOptionPane.showMessageDialog(null,"Current Balance:RM" + saving_acc);//show the current balance user have
-								amountString = JOptionPane.showInputDialog(null,"Enter amount to withdraw", "Amount withdraw", JOptionPane.INFORMATION_MESSAGE);//prompt
-								amount = Integer.parseInt(amountString);
-								
-								saving_acc -= amount;
-								
-								if(saving_acc > 0)
-								{
-								JOptionPane.showMessageDialog(null,"New Balance:RM" + saving_acc);//show the new balance after withdrawing
-								JOptionPane.showMessageDialog(null,"Please take your money");//notify user to take their money
-								}
-								else
-								{
-									JOptionPane.showMessageDialog(null,"You have failed to withdraw the money");//notify user that the process is succeed
-									saving_acc += amount;
-								}
-								
+								Withdraw(saving_acc);
 								break;
 							case "2":
-								JOptionPane.showMessageDialog(null,"You're not allow to withdraw cents");
-								JOptionPane.showMessageDialog(null,"Current Balance:RM" + saving_acc);//show the current balance user have
-								amountString = JOptionPane.showInputDialog(null,"Enter amount to withdraw", "Amount withdraw", JOptionPane.INFORMATION_MESSAGE);//prompt
-								amount = Integer.parseInt(amountString);
-								
-								current_acc -= amount;
-								
-								if(current_acc > 0)
-								{
-								JOptionPane.showMessageDialog(null,"New Balance:RM" + current_acc);//show the new balance after withdrawing
-								JOptionPane.showMessageDialog(null,"Please take your money");//notify user to take their money
-								}
-								else
-								{
-									JOptionPane.showMessageDialog(null,"You have failed to withdraw the money");//notify user that the process is succeed
-									current_acc += amount;
-								}
-								
+								Withdraw(current_acc);							
 								break;
 							default:
 								JOptionPane.showMessageDialog(null,"Please select a valid account type");//show error message to user
@@ -323,4 +174,103 @@ public class ATM_Machine
 			}					
 		}
 	}
+	public static String Pin()
+	{
+		String pin;
+		final String User_Pin = "123456";//user's registered pin
+		int times = 0;
+		
+		do
+		{
+			pin = JOptionPane.showInputDialog(null,"Please enter your pin", "Pin", JOptionPane.INFORMATION_MESSAGE);//prompt
+			times++;
+			if(times == 3)
+			{
+				JOptionPane.showMessageDialog(null,"You have exceed the maximum number of tries");
+			}
+		}
+		//user can reenter the pin if its wrong but when it exceed three tries, user can no longer attempt to enter pin anymore
+		while(pin.equals(User_Pin) == false && times < 3);
+		
+		return pin;
+	}
+	public static void Transfer(int acc_type)
+	{
+		int amount;
+		
+		JOptionPane.showMessageDialog(null,"Current Balance:RM" + acc_type);//show the current balance user have
+		amount = Amount();
+		
+		acc_type -= amount;
+		
+		if(acc_type > 0)
+		{
+		JOptionPane.showMessageDialog(null,"You have successfully transfer the money");//notify user that the process is succeed
+		JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after transferring
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"You have failed to transfer the money");//notify user that the process is succeed
+			acc_type += amount;
+		}
+	}
+	public static void Deposit(int acc_type)
+	{
+		int amount;
+		
+		JOptionPane.showMessageDialog(null,"You're not allow to deposit cents, RM1 Note, RM5 Note");
+		JOptionPane.showMessageDialog(null,"Current Balance:RM" + acc_type);//show the current balance user have
+		
+		amount = Amount();
+		
+		acc_type += amount;
+		
+		JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after depositing
+		JOptionPane.showMessageDialog(null,"Please insert your money");//notify user to insert their money
+	}
+	public static void Bill(int acc_type, int bill_type)
+	{
+		if(acc_type > 0)
+		{
+			JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
+			acc_type -= bill_type;
+			JOptionPane.showMessageDialog(null,"New Balance: RM" + acc_type);
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"You have failed to pay your bill");
+		}
+	}
+	public static void Withdraw(int acc_type)
+	{
+		int amount;
+		
+		JOptionPane.showMessageDialog(null,"You're not allow to withdraw cents");
+		JOptionPane.showMessageDialog(null,"Current Balance:RM" + acc_type);//show the current balance user have
+		amount = Amount();
+		
+		acc_type -= amount;
+		
+		if(acc_type > 0)
+		{
+		JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after withdrawing
+		JOptionPane.showMessageDialog(null,"Please take your money");//notify user to take their money
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"You have failed to withdraw the money");//notify user that the process is succeed
+			acc_type += amount;
+		}
+	}
+	public static int Amount()
+	{
+		String amountString;
+		int amount;
+		
+		amountString = JOptionPane.showInputDialog(null,"Enter amount to withdraw", "Amount withdraw", JOptionPane.INFORMATION_MESSAGE);//prompt
+		amount = Integer.parseInt(amountString);
+		
+		return amount;
+	}
+	
 }

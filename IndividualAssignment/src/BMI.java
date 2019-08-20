@@ -18,32 +18,18 @@ public class BMI {
 		JOptionPane.showMessageDialog(null,"Please note that this calculator is only applicable to people who are 20 years old or older", null, JOptionPane.INFORMATION_MESSAGE, bmi);
 		
 		//Selection of measurement
-		heightType = JOptionPane.showInputDialog(null,"Please select a measuremnt for height\n[ Inches / Meter ]", "Measurement for Height", JOptionPane.INFORMATION_MESSAGE);
-		weightType = JOptionPane.showInputDialog(null,"Please select a measuremnt for weight\n[ Pounds / Kilogram ]", "Measurement for Weight", JOptionPane.INFORMATION_MESSAGE);
+		heightType = JOptionPane.showInputDialog(null,"Please select a measurement for height\n[ Inches / Meter ]", "Measurement for Height", JOptionPane.INFORMATION_MESSAGE);
+		weightType = JOptionPane.showInputDialog(null,"Please select a measurement for weight\n[ Pounds / Kilogram ]", "Measurement for Weight", JOptionPane.INFORMATION_MESSAGE);
 		
 		BMI_Index = measurementInput(heightType,weightType);
 		
 		//Display
 		JOptionPane.showMessageDialog(null,"This is your BMI Index\n"
 				+ BMI_Index);//display user's bmi to them
-			//providing information to user about what user's bmi tells about their weight
-			if(BMI_Index <=18.5)
-			{
-				JOptionPane.showMessageDialog(null,"You're underweight!");
-			}
-			else if(BMI_Index <= 24.9)
-			{
-				JOptionPane.showMessageDialog(null,"Your weight is normal.");
-			}
-			else if(BMI_Index >= 30)
-			{
-				JOptionPane.showMessageDialog(null,"You're obese!");
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null,"You're overweight!!!");
-			}
+		//providing information to user about what user's bmi tells about their weight
+		Result(BMI_Index);
 	}
+	//type differentiation and value conversion
 	public static double measurementInput(String heightType, String weightType)
 	{	
 		double height = 0;
@@ -83,5 +69,24 @@ public class BMI {
 		}		
 		double BMI_Index = (double) Math.round((weight/(height*height)) * 100)/ 100;//calculate bmi(two decimal places)
 		return BMI_Index;
+	}
+	public static void Result(double BMI_Index)
+	{
+		if(BMI_Index <=18.5)
+		{
+			JOptionPane.showMessageDialog(null,"You're underweight!");
+		}
+		else if(BMI_Index <= 24.9)
+		{
+			JOptionPane.showMessageDialog(null,"Your weight is normal.");
+		}
+		else if(BMI_Index >= 30)
+		{
+			JOptionPane.showMessageDialog(null,"You're obese!");
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"You're overweight!!!");
+		}
 	}
 }
