@@ -19,17 +19,17 @@ public class ATM_Machine
 		
 		//to cut the code
 		final String acc_typeSEL = "Select your account type\n"
-				+ "[ 1.Savings /"
-				+ " 2.Current ]";
+				+ "1.Savings\n"
+				+ "2.Current";
 		final String bill_typeSEL = "Select your bill to pay\n"
-				+ "[ 1.Electric bill /"
-				+ " 2.Water bill ]";
+				+ "1.Electric bill\n"
+				+ "2.Water bill";
 		final String transactionSEL = "Please select a transaction\n"
-				+ "[ 1.Transfer "
-				+ "/ 2.Deposit money "
-				+ "/ 3.Balance Enquiry "
-				+ "/ 4.Bill Pay "
-				+ "/ 5.Withdraw Money ]";
+				+ " 1.Transfer\n"
+				+ "2.Deposit money\n"
+				+ "3.Balance Enquiry\n"
+				+ "4.Bill Pay\n"
+				+ "5.Withdraw Money\n";
 		
 		//Initializing idList
 		ArrayList<String> idList = new ArrayList<String>();//Registered ids
@@ -109,7 +109,7 @@ public class ATM_Machine
 					//Input
 					acc_type = JOptionPane.showInputDialog(null,acc_typeSEL, JOptionPane.INFORMATION_MESSAGE);
 					
-					//curent or saving account
+					//current or saving account
 					switch(acc_type)
 					{
 						case "1":
@@ -181,7 +181,12 @@ public class ATM_Machine
 		int times = 0;
 		
 		do
-		{
+		{	
+			//putting it after the times++ statement so that when user enter the correct pin and when the user exceed three times of tries this wont show
+			if(times > 0)	
+			{
+				JOptionPane.showMessageDialog(null,"The pin is incorrect, pleaase try again");
+			}
 			pin = JOptionPane.showInputDialog(null,"Please enter your pin", "Pin", JOptionPane.INFORMATION_MESSAGE);//prompt
 			times++;
 			if(times == 3)
