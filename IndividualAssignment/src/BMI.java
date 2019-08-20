@@ -15,7 +15,7 @@ public class BMI {
 		
 		
 		//Clarification
-		JOptionPane.showMessageDialog(null,"Please note that this calculator is only applicable to people who are 20 years old or older", null, JOptionPane.INFORMATION_MESSAGE, bmi);
+		JOptionPane.showMessageDialog(null,"Please note that this calculator is only applicable to people who are 20 years old or older", "BMI Calculator", JOptionPane.INFORMATION_MESSAGE, bmi);
 		
 		//Selection of measurement
 		heightType = JOptionPane.showInputDialog(null,"Please select a measurement for height\n[ Inches / Meter ]", "Measurement for Height", JOptionPane.INFORMATION_MESSAGE);
@@ -49,6 +49,7 @@ public class BMI {
 			
 			default:
 				JOptionPane.showMessageDialog(null,"Please select a valid measurement for height");
+				System.exit(0);
 				break;
 		}
 		
@@ -65,6 +66,7 @@ public class BMI {
 			break;
 		default:
 			JOptionPane.showMessageDialog(null,"Please select a valid measurement for weight");
+			System.exit(0);
 			break;
 		}		
 		double BMI_Index = (double) Math.round((weight/(height*height)) * 100)/ 100;//calculate bmi(two decimal places)

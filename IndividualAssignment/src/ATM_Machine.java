@@ -27,12 +27,14 @@ public class ATM_Machine
 		final String transactionSEL = "Please select a transaction\n"
 				+ " 1.Transfer\n"
 				+ "2.Deposit money\n"
-				+ "3.Balance Enquiry\n"
+				+ "3.Balance Enquiry\n"			
 				+ "4.Bill Pay\n"
 				+ "5.Withdraw Money\n";
 		
+		//Declaration of Registered id list
+		ArrayList<String> idList = new ArrayList<String>();
+		
 		//Initializing idList
-		ArrayList<String> idList = new ArrayList<String>();//Registered ids
 		idList.add("123456789");
 		idList.add("325363744");
 		idList.add("324928734");
@@ -185,7 +187,7 @@ public class ATM_Machine
 			//putting it after the times++ statement so that when user enter the correct pin and when the user exceed three times of tries this wont show
 			if(times > 0)	
 			{
-				JOptionPane.showMessageDialog(null,"The pin is incorrect, pleaase try again");
+				JOptionPane.showMessageDialog(null,"The pin is incorrect, please try again");
 			}
 			pin = JOptionPane.showInputDialog(null,"Please enter your pin", "Pin", JOptionPane.INFORMATION_MESSAGE);//prompt
 			times++;
