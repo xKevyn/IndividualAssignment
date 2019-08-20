@@ -208,7 +208,7 @@ public class ATM_Machine
 		
 		acc_type -= amount;
 		
-		if(acc_type > 0)
+		if(acc_type > amount)
 		{
 		JOptionPane.showMessageDialog(null,"You have successfully transfer the money");//notify user that the process is succeed
 		JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after transferring
@@ -235,7 +235,7 @@ public class ATM_Machine
 	}
 	public static void Bill(int acc_type, int bill_type)
 	{
-		if(acc_type > 0)
+		if(acc_type > bill_type)
 		{
 			JOptionPane.showMessageDialog(null,"You have successfully paid your bill");
 			acc_type -= bill_type;
@@ -256,7 +256,7 @@ public class ATM_Machine
 		
 		acc_type -= amount;
 		
-		if(acc_type > 0)
+		if(acc_type > amount)
 		{
 		JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after withdrawing
 		JOptionPane.showMessageDialog(null,"Please take your money");//notify user to take their money
