@@ -42,7 +42,7 @@ public class ATM_Machine
 		idList.add("908462745");
 		
 		//Loop for inputing pin (maximum 3 times)
-		JOptionPane.showMessageDialog(null,"Please insert your card");
+		JOptionPane.showMessageDialog(null,"Please insert your card", "Please insert your card", JOptionPane.INFORMATION_MESSAGE);
 		
 		pin = Pin();
 		//if the pin is correct proceed to the next step
@@ -206,18 +206,19 @@ public class ATM_Machine
 		int amount;
 		
 		JOptionPane.showMessageDialog(null,"Current Balance:RM" + acc_type);//show the current balance user have
-		amount = Amount();
-		
-		acc_type -= amount;
+		amount = Amount();		
 		
 		if(acc_type > amount)
 		{
-		JOptionPane.showMessageDialog(null,"You have successfully transfer the money");//notify user that the process is succeed
-		JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after transferring
+			acc_type -= amount;	
+			
+			JOptionPane.showMessageDialog(null,"You have successfully transfer the money");//notify user that the process is succeed
+			JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after transferring
 		}
 		else
 		{
 			JOptionPane.showMessageDialog(null,"You have failed to transfer the money");//notify user that the process is succeed
+			
 			acc_type += amount;
 		}
 	}
@@ -256,16 +257,17 @@ public class ATM_Machine
 		JOptionPane.showMessageDialog(null,"Current Balance:RM" + acc_type);//show the current balance user have
 		amount = Amount();
 		
-		acc_type -= amount;
-		
 		if(acc_type > amount)
 		{
-		JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after withdrawing
-		JOptionPane.showMessageDialog(null,"Please take your money");//notify user to take their money
+			acc_type -= amount;
+			
+			JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after withdrawing
+			JOptionPane.showMessageDialog(null,"Please take your money");//notify user to take their money
 		}
 		else
 		{
 			JOptionPane.showMessageDialog(null,"You have failed to withdraw the money");//notify user that the process is succeed
+			
 			acc_type += amount;
 		}
 	}
@@ -279,5 +281,4 @@ public class ATM_Machine
 		
 		return amount;
 	}
-	
 }

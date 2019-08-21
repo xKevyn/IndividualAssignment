@@ -32,7 +32,7 @@ public class AdvTicketPrice
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null,"RM10");
+					JOptionPane.showMessageDialog(null,"Your ticket price is RM10");
 				}
 				break;
 			//Friday to Sunday have the same price
@@ -45,11 +45,11 @@ public class AdvTicketPrice
 				//Kids and elders gets a discount of RM10
 				if (age <= 9 || age >= 66)
 				{
-					JOptionPane.showMessageDialog(null,"RM10");
+					JOptionPane.showMessageDialog(null,"Your ticket price is RM10");
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null,"RM20");
+					JOptionPane.showMessageDialog(null,"Your ticket price is RM20");
 				}
 				break;
 			default:
