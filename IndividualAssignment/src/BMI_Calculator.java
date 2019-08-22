@@ -26,6 +26,7 @@ public class BMI_Calculator {
 		//Display
 		JOptionPane.showMessageDialog(null,"This is your BMI Index\n"
 				+ BMI_Index);//display user's bmi to them
+		
 		//providing information to user about what user's bmi tells about their weight
 		Result(BMI_Index);
 	}
@@ -91,4 +92,6 @@ public class BMI_Calculator {
 			JOptionPane.showMessageDialog(null,"You're overweight!!!");
 		}
 	}
+	
+	
 }
