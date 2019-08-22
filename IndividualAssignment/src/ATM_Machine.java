@@ -109,7 +109,7 @@ public class ATM_Machine
 					break;
 				case "4":
 					//Input
-					acc_type = JOptionPane.showInputDialog(null,acc_typeSEL, JOptionPane.INFORMATION_MESSAGE);
+					acc_type = JOptionPane.showInputDialog(null,acc_typeSEL,"Account Type", JOptionPane.INFORMATION_MESSAGE);
 					
 					//current or saving account
 					switch(acc_type)
