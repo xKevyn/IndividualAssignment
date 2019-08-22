@@ -25,7 +25,7 @@ public class ATM_Machine
 				+ "1.Electric bill\n"
 				+ "2.Water bill";
 		final String transactionSEL = "Please select a transaction\n"
-				+ " 1.Transfer\n"
+				+ "1.Transfer\n"
 				+ "2.Deposit money\n"
 				+ "3.Balance Enquiry\n"			
 				+ "4.Bill Pay\n"
@@ -233,8 +233,8 @@ public class ATM_Machine
 		
 		acc_type += amount;
 		
-		JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after depositing
 		JOptionPane.showMessageDialog(null,"Please insert your money");//notify user to insert their money
+		JOptionPane.showMessageDialog(null,"New Balance:RM" + acc_type);//show the new balance after depositing
 	}
 	public static void Bill(int acc_type, int bill_type)
 	{
@@ -276,7 +276,7 @@ public class ATM_Machine
 		String amountString;
 		int amount;
 		
-		amountString = JOptionPane.showInputDialog(null,"Enter amount to withdraw", "Amount withdraw", JOptionPane.INFORMATION_MESSAGE);//prompt
+		amountString = JOptionPane.showInputDialog(null,"Enter amount", "Amount", JOptionPane.INFORMATION_MESSAGE);//prompt
 		amount = Integer.parseInt(amountString);
 		
 		return amount;
