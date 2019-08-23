@@ -15,12 +15,14 @@ public class BMI_Calculator {
 		
 		
 		//Clarification
-		JOptionPane.showMessageDialog(null,"Please note that this calculator is only applicable to people who are 20 years old or older", "BMI Calculator", JOptionPane.INFORMATION_MESSAGE, bmi);
+		JOptionPane.showMessageDialog(null,"Please note that this calculator is only applicable to people who are 20 years old or older", 
+				"BMI Calculator", JOptionPane.INFORMATION_MESSAGE, bmi);
 		
 		//Selection of measurement
 		heightType = JOptionPane.showInputDialog(null,"Please select a measurement for height\n[ Inches / Meter ]", "Measurement for Height", JOptionPane.INFORMATION_MESSAGE);
+		//Flaw - The program will prompt user to input weight type when the height type is invalid
 		weightType = JOptionPane.showInputDialog(null,"Please select a measurement for weight\n[ Pounds / Kilogram ]", "Measurement for Weight", JOptionPane.INFORMATION_MESSAGE);
-		
+
 		BMI_Index = measurementInput(heightType,weightType);
 		
 		//Display

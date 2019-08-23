@@ -1,4 +1,6 @@
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 
 public class AdvTicketPrice 
@@ -10,9 +12,12 @@ public class AdvTicketPrice
 		String ageString;
 		int age;
 		
+		//Background Color
+		UI();
+		
 		//Input
 		AdvTicket_Day = JOptionPane.showInputDialog(null,"Which day are you buying the ticket?",
-				"Advanced version of Ticket Price Program", JOptionPane.QUESTION_MESSAGE);
+				"Advanced version of Ticket Price Program", JOptionPane.PLAIN_MESSAGE);
 		
 		//Displaying different ticket price for each different day user selected and age they are
 		switch(AdvTicket_Day.toLowerCase())
@@ -57,5 +62,11 @@ public class AdvTicketPrice
 				break;
 	
 		}
+	}
+	//Changing JOptionPane's background color to cyan
+	public static void UI()
+	{
+		UIManager.put("OptionPane.background", new ColorUIResource(200, 198, 247));
+		UIManager.put("Panel.background", new ColorUIResource(200, 198, 247));
 	}
 }

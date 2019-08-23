@@ -56,22 +56,48 @@ public class Ticket_Price
 	
 	/**This method is mainly to correct a flaw that was in this program - If a user input a invalid day,
 	 *  the program will continues to ask the user input ticket number. In order to correct this,
-	 *  the input statement will need to be executed inside the switch statement.
+	 *  the input statement for the number of tickets will need to be executed inside the switch statement.
 	 *  This method is to shorten the code, increasing the readability
-	**/
-	
+	**/	
 	public static int TicketNum()
 	{
 		String ticketNumString;
-		int ticketNum;
+		int ticketNum = 0;
 		
 		ticketNumString = JOptionPane.showInputDialog(null,"How many tickets would you like to buy?",
 				"Ticket Price Program", JOptionPane.QUESTION_MESSAGE);//To calculate the total price of tickets if the user are buying multiple tickets
 		
+		if(isNumeric(ticketNumString) == false)
+		{
+			//If the input for ticket number is not a number
+			//Show an error message and terminate the program
+			JOptionPane.showMessageDialog(null,"Please enter a valid value");
+			System.exit(0);
+		}
+		else
+		{
 		//convert string to integer so that it can be used for calculation
 		ticketNum = Integer.parseInt(ticketNumString);
-		
+		}
 		return ticketNum;
+		
+	}
+	//This method is used for detecting whether the input for ticket number is a number or not
+	public static boolean isNumeric(String ticketNumString)
+	{
+		//Detect the Input String
+		try
+		{
+			Integer.parseInt(ticketNumString);
+		}
+		//See if this specific error(not number, is null) will occur or not?
+		catch(NumberFormatException | NullPointerException nfe)
+		{
+			//if yes, return false 
+			return false;
+		}
+		//if no, return true
+		return true;
 		
 	}
 }
