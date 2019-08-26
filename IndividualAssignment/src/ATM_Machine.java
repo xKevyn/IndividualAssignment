@@ -7,6 +7,17 @@ public class ATM_Machine
 	{
 		//Variables
 		String pin;
+		
+		//Loop for inputing pin (maximum 3 times)
+		JOptionPane.showMessageDialog(null,"Please insert your card", "Please insert your card", JOptionPane.INFORMATION_MESSAGE);
+		
+		pin = Pin();
+		isPin(pin);
+		//if the pin is correct proceed to the next step
+		
+	}
+	public static void isPin(String pin)
+	{
 		String transaction;
 		String acc_type;
 		String id;
@@ -41,11 +52,6 @@ public class ATM_Machine
 		idList.add("193850726");
 		idList.add("908462745");
 		
-		//Loop for inputing pin (maximum 3 times)
-		JOptionPane.showMessageDialog(null,"Please insert your card", "Please insert your card", JOptionPane.INFORMATION_MESSAGE);
-		
-		pin = Pin();
-		//if the pin is correct proceed to the next step
 		if(pin.equals(User_Pin))
 		{		
 			transaction = JOptionPane.showInputDialog(null,transactionSEL);//user can select the functionality they want to use
@@ -177,6 +183,7 @@ public class ATM_Machine
 		}
 	}
 	public static String Pin()
+
 	{
 		String pin;
 		final String User_Pin = "123456";//user's registered pin

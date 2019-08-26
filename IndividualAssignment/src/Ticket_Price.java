@@ -5,6 +5,10 @@ public class Ticket_Price
 {
 	public static void main(String[] args) 
 	{
+		Display();
+	}
+	public static void Display()
+	{
 		//Variable
 		String Ticket_Day;
 		int ticketNum;

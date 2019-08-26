@@ -5,32 +5,36 @@ import javax.swing.JOptionPane;
 public class BMI_Calculator {
 	public static void main(String[] args) 
 	{
+		Display();
+	}
+	public static void Display()
+	{
 		//Variables
-		String heightType;
-		String weightType;
-		double BMI_Index = 0;
-		
-		//Images
-		ImageIcon bmi = new ImageIcon("bmi.PNG");
-		
-		
-		//Clarification
-		JOptionPane.showMessageDialog(null,"Please note that this calculator is only applicable to people who are 20 years old or older", 
-				"BMI Calculator", JOptionPane.INFORMATION_MESSAGE, bmi);
-		
-		//Selection of measurement
-		heightType = JOptionPane.showInputDialog(null,"Please select a measurement for height\n[ Inches / Meter ]", "Measurement for Height", JOptionPane.INFORMATION_MESSAGE);
-		//Flaw - The program will prompt user to input weight type when the height type is invalid
-		weightType = JOptionPane.showInputDialog(null,"Please select a measurement for weight\n[ Pounds / Kilogram ]", "Measurement for Weight", JOptionPane.INFORMATION_MESSAGE);
+				String heightType;
+				String weightType;
+				double BMI_Index = 0;
+				
+				//Images
+				ImageIcon bmi = new ImageIcon("bmi.PNG");
+				
+				
+				//Clarification
+				JOptionPane.showMessageDialog(null,"Please note that this calculator is only applicable to people who are 20 years old or older", 
+						"BMI Calculator", JOptionPane.INFORMATION_MESSAGE, bmi);
+				
+				//Selection of measurement
+				heightType = JOptionPane.showInputDialog(null,"Please select a measurement for height\n[ Inches / Meter ]", "Measurement for Height", JOptionPane.INFORMATION_MESSAGE);
+				//Flaw - The program will prompt user to input weight type when the height type is invalid
+				weightType = JOptionPane.showInputDialog(null,"Please select a measurement for weight\n[ Pounds / Kilogram ]", "Measurement for Weight", JOptionPane.INFORMATION_MESSAGE);
 
-		BMI_Index = measurementInput(heightType,weightType);
-		
-		//Display
-		JOptionPane.showMessageDialog(null,"This is your BMI Index\n"
-				+ BMI_Index);//display user's bmi to them
-		
-		//providing information to user about what user's bmi tells about their weight
-		Result(BMI_Index);
+				BMI_Index = measurementInput(heightType,weightType);
+				
+				//Display
+				JOptionPane.showMessageDialog(null,"This is your BMI Index\n"
+						+ BMI_Index);//display user's BMI to them
+				
+				//providing information to user about what user's BMI tells about their weight
+				Result(BMI_Index);
 	}
 	//type differentiation and value conversion
 	public static double measurementInput(String heightType, String weightType)
@@ -52,7 +56,7 @@ public class BMI_Calculator {
 			
 			default:
 				JOptionPane.showMessageDialog(null,"Please select a valid measurement for height");
-				System.exit(0);
+				System.exit(0);//immediately exit the program after a invalid value is inputed so it wont go to the next statement
 				break;
 		}
 		
@@ -69,7 +73,7 @@ public class BMI_Calculator {
 			break;
 		default:
 			JOptionPane.showMessageDialog(null,"Please select a valid measurement for weight");
-			System.exit(0);
+			System.exit(0);//immediately exit the program after a invalid value is inputed so it wont go to the next statement
 			break;
 		}		
 		double BMI_Index = (double) Math.round((weight/(height*height)) * 100)/ 100;//calculate bmi(two decimal places)
