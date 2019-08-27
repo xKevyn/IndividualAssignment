@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 
 public class AdvTicketPrice 
 {
+	//can be used in every method
 	static Font font = new Font("Comic Sans MS", Font.BOLD, 14);
 	
 	public static void main(String[] args) 
@@ -23,6 +24,7 @@ public class AdvTicketPrice
 		
 		JLabel dayInput = new JLabel("Which day are you buying the ticket?");
 		dayInput.setFont(font);
+		
 		//Background Color
 		UI();
 		

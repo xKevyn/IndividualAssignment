@@ -10,75 +10,81 @@ public class BMI_Calculator {
 	public static void Display()
 	{
 		//Variables
-				String heightType;
-				String weightType;
-				double BMI_Index = 0;
-				
-				//Images
-				ImageIcon bmi = new ImageIcon("bmi.PNG");
-				
-				
-				//Clarification
-				JOptionPane.showMessageDialog(null,"Please note that this calculator is only applicable to people who are 20 years old or older", 
-						"BMI Calculator", JOptionPane.INFORMATION_MESSAGE, bmi);
-				
-				//Selection of measurement
-				heightType = JOptionPane.showInputDialog(null,"Please select a measurement for height\n[ Inches / Meter ]", "Measurement for Height", JOptionPane.INFORMATION_MESSAGE);
-				//Flaw - The program will prompt user to input weight type when the height type is invalid
-				weightType = JOptionPane.showInputDialog(null,"Please select a measurement for weight\n[ Pounds / Kilogram ]", "Measurement for Weight", JOptionPane.INFORMATION_MESSAGE);
+		int heightType;
+		int weightType;
+		double BMI_Index = 0;
+		
+		//Images
+		ImageIcon bmi = new ImageIcon("bmi.PNG");
+		String[] HeightOption = {"Inches","Meter"};
+		String[] WeightOption = {"Pounds", "Kilogram"};
+		
+		//Clarification
+		JOptionPane.showMessageDialog(null,"Please note that this calculator is only applicable to people who are 20 years old or older", 
+				"BMI Calculator", JOptionPane.INFORMATION_MESSAGE, bmi);
+		
+		//Selection of measurement
+		heightType = JOptionPane.showOptionDialog(null,"Inches or Meter", "Measurement for Height", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null,HeightOption,HeightOption[0]);
+		weightType = JOptionPane.showOptionDialog(null,"Pounds or Kilogram", "Measurement for Weight", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null,WeightOption,WeightOption[0]);
 
-				BMI_Index = measurementInput(heightType,weightType);
-				
-				//Display
-				JOptionPane.showMessageDialog(null,"This is your BMI Index\n"
-						+ BMI_Index);//display user's BMI to them
-				
-				//providing information to user about what user's BMI tells about their weight
-				Result(BMI_Index);
+		BMI_Index = measurementInput(heightType,weightType);
+		
+		//Display
+		JOptionPane.showMessageDialog(null,"This is your BMI Index\n"
+				+ BMI_Index);//display user's BMI to them
+		
+		//providing information to user about what user's BMI tells about their weight
+		Result(BMI_Index);
 	}
 	//type differentiation and value conversion
-	public static double measurementInput(String heightType, String weightType)
+	public static double measurementInput(int heightType, int weightType)//the chosen type input will be inputed into this method
 	{	
-		double height = 0;
-		double weight = 0;
+		double height;
+		double weight;
 		
-		switch(heightType.toLowerCase())
-		{
-			case "inches":
-				String heightInInches = JOptionPane.showInputDialog(null,"Please enter your height in inches", "Height", JOptionPane.INFORMATION_MESSAGE);
-				height = (Double.parseDouble(heightInInches)) * 0.0254;
-				break;
-			
-			case "meter":
-				String heightInMeter = JOptionPane.showInputDialog(null,"Please enter your height in m", "Height", JOptionPane.INFORMATION_MESSAGE);
-				height = Double.parseDouble(heightInMeter);
-				break;
-			
-			default:
-				JOptionPane.showMessageDialog(null,"Please select a valid measurement for height");
-				System.exit(0);//immediately exit the program after a invalid value is inputed so it wont go to the next statement
-				break;
-		}
+		height = HeightInput(heightType);
+		weight = WeightInput(weightType);
 		
-		switch(weightType.toLowerCase())
-		{
-		case "pounds":
-		
-			String weightInPounds = JOptionPane.showInputDialog(null,"Please enter your weight in pounds", "Weight", JOptionPane.INFORMATION_MESSAGE);
-			weight = (Double.parseDouble(weightInPounds)) * 0.45359237;
-			break;
-		case "kilogram":
-			String weightInKg = JOptionPane.showInputDialog(null,"Please enter your weight in kg", "Weight", JOptionPane.INFORMATION_MESSAGE);
-			weight = Double.parseDouble(weightInKg);
-			break;
-		default:
-			JOptionPane.showMessageDialog(null,"Please select a valid measurement for weight");
-			System.exit(0);//immediately exit the program after a invalid value is inputed so it wont go to the next statement
-			break;
-		}		
 		double BMI_Index = (double) Math.round((weight/(height*height)) * 100)/ 100;//calculate bmi(two decimal places)
 		return BMI_Index;
 	}
+	
+	public static double WeightInput(int weightType)
+	{	
+		double weight;
+		
+		if(weightType == 0)
+		{
+			String weightInPounds = JOptionPane.showInputDialog(null,"Please enter your weight in pounds", "Weight", JOptionPane.INFORMATION_MESSAGE);
+			weight = (Double.parseDouble(weightInPounds)) * 0.45359237;//converts to kilogram
+			return weight;
+		}
+		else
+		{
+			String weightInKg = JOptionPane.showInputDialog(null,"Please enter your weight in kg", "Weight", JOptionPane.INFORMATION_MESSAGE);
+			weight = Double.parseDouble(weightInKg);
+			return weight;
+		}
+	}
+	
+	public static double HeightInput(int heightType)
+	{	
+		double height;
+		
+		if(heightType == 0)
+		{
+			String heightInInches = JOptionPane.showInputDialog(null,"Please enter your height in inches", "Height", JOptionPane.INFORMATION_MESSAGE);
+			height = (Double.parseDouble(heightInInches)) * 0.0254;//converts to meter
+			return height;
+		}
+		else
+		{
+			String heightInMeter = JOptionPane.showInputDialog(null,"Please enter your height in m", "Height", JOptionPane.INFORMATION_MESSAGE);
+			height = Double.parseDouble(heightInMeter);
+			return height;
+		}
+	}
+	
 	public static void Result(double BMI_Index)
 	{
 		if(BMI_Index <=18.5)
