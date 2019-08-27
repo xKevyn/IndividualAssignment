@@ -13,11 +13,11 @@ public class ATM_Machine
 		
 		pin = Pin();
 		isPin(pin);
-		//if the pin is correct proceed to the next step
 		
 	}
 	public static void isPin(String pin)
 	{
+		//Variables
 		String transaction;
 		String acc_type;
 		String id;
@@ -52,7 +52,7 @@ public class ATM_Machine
 		idList.add("193850726");
 		idList.add("908462745");
 		
-		if(pin.equals(User_Pin))
+		if(pin.equals(User_Pin))//if the pin is correct proceed to the next step
 		{		
 			transaction = JOptionPane.showInputDialog(null,transactionSEL);//user can select the functionality they want to use
 			
