@@ -61,6 +61,7 @@ public class ATM_Machine
 			{
 				default:
 					JOptionPane.showMessageDialog(null,"Please select a valid transaction");//showing error message to user
+					
 					break;
 				case "1":
 					//Input
@@ -93,22 +94,27 @@ public class ATM_Machine
 						break;
 						}					
 					}
-					break;
+					
+					break;//case break for transaction
 				case "2":
 					//Input
 					acc_type = JOptionPane.showInputDialog(null,acc_typeSEL, "Account Type", JOptionPane.INFORMATION_MESSAGE);
 					
-					//current or saving account
-					switch(acc_type)
-					{
-					case "1":
-					Deposit(saving_acc);
-					break;
-					case "2":
-					Deposit(current_acc);
-					break;
-					}
-					break;
+						//current or saving account
+						switch(acc_type)
+						{
+							case "1":
+							Deposit(saving_acc);
+							
+							break;
+							
+							case "2":
+							Deposit(current_acc);
+							
+							break;
+						}
+						
+					break;//case break for transaction
 				case "3":
 					//Displaying the balance of current account and saving account
 					JOptionPane.showMessageDialog(null,"Balance\nSaving Account:" + saving_acc + "\nCurrent Account:" + current_acc);
@@ -134,12 +140,14 @@ public class ATM_Machine
 									break;
 								case "2":
 									Bill(saving_acc, waterBill);
+									
 									break;
 								default:
 									JOptionPane.showMessageDialog(null,"Please select a valid bill type");
+									
 									break;
 							}
-							break;
+							break;//case break for acc_type
 						case "2":
 							JOptionPane.showMessageDialog(null,"Current Balance:RM" + current_acc);//show the current balance user have
 							bill = JOptionPane.showInputDialog(null,bill_typeSEL,"Bill Type", JOptionPane.INFORMATION_MESSAGE);
@@ -157,12 +165,15 @@ public class ATM_Machine
 									JOptionPane.showMessageDialog(null,"Please select a valid bill type");
 									break;
 							}
+							
+							break;//case break for acc_type
+						default:
+							JOptionPane.showMessageDialog(null,"Please select a valid account type");
+							
 							break;
-							default:
-								JOptionPane.showMessageDialog(null,"Please select a valid account type");
-								break;
 					}
-					break;
+					
+					break;//case break for transaction
 				case "5":
 					acc_type = JOptionPane.showInputDialog(null,acc_typeSEL,"Account Type", JOptionPane.INFORMATION_MESSAGE);
 
@@ -179,6 +190,8 @@ public class ATM_Machine
 								JOptionPane.showMessageDialog(null,"Please select a valid account type");//show error message to user
 								break;
 						}
+					break;//case break for transaction
+						
 			}					
 		}
 	}
