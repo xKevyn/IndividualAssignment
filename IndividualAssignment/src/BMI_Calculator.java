@@ -26,7 +26,8 @@ public class BMI_Calculator {
 		//Selection of measurement
 		heightType = JOptionPane.showOptionDialog(null,"Inches or Meter", "Measurement for Height", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null,HeightOption,HeightOption[0]);
 		weightType = JOptionPane.showOptionDialog(null,"Pounds or Kilogram", "Measurement for Weight", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null,WeightOption,WeightOption[0]);
-
+		
+		//Method calling
 		BMI_Index = measurementInput(heightType,weightType);
 		
 		//Display
@@ -36,7 +37,7 @@ public class BMI_Calculator {
 		//providing information to user about what user's BMI tells about their weight
 		Result(BMI_Index);
 	}
-	//type differentiation and value conversion
+	//Calculates the bmi index
 	public static double measurementInput(int heightType, int weightType)//the chosen type input will be inputed into this method
 	{	
 		double height;
@@ -49,11 +50,12 @@ public class BMI_Calculator {
 		return BMI_Index;
 	}
 	
+	//differentiate the type of measurement and convert the value if necessary
 	public static double WeightInput(int weightType)
 	{	
 		double weight;
 		
-		if(weightType == 0)
+		if(weightType == 0)//Pounds = 0, Kilogram = 1
 		{
 			String weightInPounds = JOptionPane.showInputDialog(null,"Please enter your weight in pounds", "Weight", JOptionPane.INFORMATION_MESSAGE);
 			weight = (Double.parseDouble(weightInPounds)) * 0.45359237;//converts to kilogram
@@ -67,11 +69,12 @@ public class BMI_Calculator {
 		}
 	}
 	
+	//differentiate the type of measurement and convert the value if necessary
 	public static double HeightInput(int heightType)
 	{	
 		double height;
 		
-		if(heightType == 0)
+		if(heightType == 0)//Inches = 0, Meter = 1
 		{
 			String heightInInches = JOptionPane.showInputDialog(null,"Please enter your height in inches", "Height", JOptionPane.INFORMATION_MESSAGE);
 			height = (Double.parseDouble(heightInInches)) * 0.0254;//converts to meter
@@ -84,7 +87,7 @@ public class BMI_Calculator {
 			return height;
 		}
 	}
-	
+	//Determine and interpret the bmi index
 	public static void Result(double BMI_Index)
 	{
 		if(BMI_Index <=18.5)

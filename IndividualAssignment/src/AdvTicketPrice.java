@@ -22,6 +22,7 @@ public class AdvTicketPrice
 		String[] day = {"Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 		int age;
 		
+		//Font change
 		JLabel dayInput = new JLabel("Which day are you buying the ticket?");
 		dayInput.setFont(font);
 		
